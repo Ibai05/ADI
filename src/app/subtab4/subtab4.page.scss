@@ -1,0 +1,47 @@
+ion-content {
+    --padding-top: 0; 
+  }
+  
+  .basket-container {
+    padding: 16px;
+  }
+  
+  .product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-item ion-thumbnail {
+    --border-radius: 8px;
+    margin-right: 16px;
+  }
+  
+  .product-item h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .quantity {
+    margin: 0 8px;
+    font-weight: bold;
+  }
+  
+  .summary {
+    padding: 16px 0;
+    text-align: center;
+  }
+  
+  .summary ion-item {
+    --background: transparent;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .summary ion-button {
+    margin-top: 16px;
+  }
+  

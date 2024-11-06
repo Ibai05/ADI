@@ -1,0 +1,38 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px;
+  }
+  
+  .login-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 24px;
+  }
+  
+  .input-item {
+    width: 100%;
+    background-color: #E0E0E0;
+    padding: 0 12px;
+    color: #000000;
+    margin-top: 16px;
+  }
+  
+  .login-button {
+    margin-top: 24px;
+    background-color: #68B3F2;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-family: sans-serif-medium;
+  }
+  
+  .register-button {
+    margin-top: 8px;
+    border-radius: 4px;
+    background-color: #68B3F2;
+    color: #FFFFFF;
+    font-family: sans-serif-medium;
+  }
+  
