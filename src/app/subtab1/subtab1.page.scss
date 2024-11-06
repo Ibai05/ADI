@@ -1,0 +1,35 @@
+.product-slider {
+    height: 100%;
+  }
+  
+  .product-card {
+    width: 200px; /* Tamaño cuadrado */
+    height: 200px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    margin: 0 auto; /* Centra cada tarjeta */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .product-card ion-img {
+    width: 100%;
+    height: 70%; /* Ocupa la mayor parte del cuadro */
+    object-fit: cover; /* Asegura que la imagen se ajuste sin distorsión */
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .product-card h2 {
+    font-size: 14px;
+    margin: 8px 0 4px;
+    color: #333;
+  }
+  
+  .product-card .price {
+    font-size: 14px;
+    font-weight: bold;
+    color: #68B3F2;
+  }
+  
