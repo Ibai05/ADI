@@ -22,6 +22,14 @@ const routes: Routes = [
     path: 'subtab4',
     loadChildren: () => import('./subtab4/subtab4.module').then( m => m.Subtab4PageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
   
 ];
 @NgModule({
