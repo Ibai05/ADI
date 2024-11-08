@@ -28,4 +28,9 @@ export class LoginPage implements OnInit {
       }
     );
   }
+
+  goToRegister() {
+    // Navega a la página de registro
+    this.navCtrl.navigateForward('/register');
+  }
 }
