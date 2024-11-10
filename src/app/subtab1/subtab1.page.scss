@@ -1,35 +1,113 @@
-.product-slider {
-    height: 100%;
-  }
-  
+/* Fondo general del body */
+body {
+  background-color: #ffffff; /* Fondo blanco para toda la página */
+  color: #333; /* Color de texto oscuro para asegurar buen contraste */
+  font-family: 'Arial', sans-serif; /* Fuente sans-serif por defecto */
+  margin: 0;
+  padding: 0;
+}
+
+/* Título de la sección */
+.section-title {
+  font-size: 1.5rem;
+  margin: 20px 15px 10px;
+  font-weight: bold;
+  color: #fff7f7; /* Mantén un texto oscuro para contraste con el fondo claro */
+}
+
+/* Contenedor de productos con desplazamiento horizontal */
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 15px;
+  gap: 10px; /* Espaciado entre productos */
+  scroll-snap-type: x mandatory; /* Efecto de deslizamiento suave */
+  background-color: #f9f9f9; /* Fondo claro para que resalten las tarjetas */
+  border-radius: 10px; /* Bordes redondeados en el contenedor */
+}
+
+/* Estilo de las tarjetas de productos */
+.product-card {
+  flex: 0 0 auto; /* Evita que los elementos se reduzcan y permite el scroll horizontal */
+  width: 160px; /* Ajusta el tamaño para que se vean varios productos */
+  max-width: 200px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacar las tarjetas */
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff; /* Fondo blanco para las tarjetas */
+  transition: transform 0.3s;
+  scroll-snap-align: start; /* Alineación para el efecto de deslizamiento */
+  border: 1px solid #ddd; /* Borde claro alrededor de las tarjetas */
+}
+
+/* Efecto hover en las tarjetas */
+.product-card:hover {
+  transform: translateY(-3px); /* Efecto de elevación */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
+}
+
+/* Estilo de la imagen del producto */
+.product-img {
+  object-fit: cover;
+  height: 140px;
+  width: 100%;
+}
+
+/* Título del producto */
+.product-title {
+  font-size: 1rem; /* Tamaño de fuente similar a la Play Store */
+  font-weight: 600;
+  margin: 8px 0 4px;
+  color: #333; /* Texto oscuro para una mejor legibilidad */
+}
+
+/* Precio del producto */
+.price {
+  color: #4caf50; /* Verde de precio para destacar */
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Estilos específicos para dispositivos móviles */
+@media (max-width: 768px) {
   .product-card {
-    width: 200px; /* Tamaño cuadrado */
-    height: 200px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    margin: 0 auto; /* Centra cada tarjeta */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    width: 120px; /* Tamaño más pequeño para móviles */
+    max-width: 140px;
   }
-  
-  .product-card ion-img {
-    width: 100%;
-    height: 70%; /* Ocupa la mayor parte del cuadro */
-    object-fit: cover; /* Asegura que la imagen se ajuste sin distorsión */
-    border-radius: 8px 8px 0 0;
+
+  .product-img {
+    height: 120px;
   }
-  
-  .product-card h2 {
-    font-size: 14px;
-    margin: 8px 0 4px;
-    color: #333;
+
+  .product-title {
+    font-size: 0.9rem;
   }
-  
-  .product-card .price {
-    font-size: 14px;
-    font-weight: bold;
-    color: #68B3F2;
+
+  .price {
+    font-size: 0.8rem;
   }
-  
+}
+
+/* Estilos específicos para pantallas grandes */
+@media (min-width: 1024px) {
+  .section-title {
+    font-size: 1.75rem; /* Tamaño de texto más grande para el título */
+  }
+
+  .product-card {
+    width: 180px; /* Aumenta el tamaño de la tarjeta para pantallas grandes */
+    max-width: 220px;
+  }
+
+  .product-img {
+    height: 160px;
+  }
+
+  .product-title {
+    font-size: 1.1rem;
+  }
+
+  .price {
+    font-size: 1rem;
+  }
+}

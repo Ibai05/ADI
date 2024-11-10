@@ -1,0 +1,26 @@
+
+.custom-tab-bar {
+    --background: #ffffff; /* Fondo claro */
+    --color: #5f6368; /* Color de texto similar al gris de la Play Store */
+    --color-selected: #1a73e8; /* Azul de selección similar al de Google */
+    --border: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  }
+  
+  ion-tab-button {
+    font-family: 'Roboto', sans-serif; /* Fuente similar a la Play Store */
+    font-weight: 500; /* Peso medio */
+  }
+  
+  ion-tab-button ion-label {
+    font-size: 0.9rem; /* Tamaño de fuente moderado */
+  }
+  
+  ion-tab-button[selected] {
+    color: var(--color-selected); /* Azul al seleccionar */
+  }
+  
+  ion-tab-button ion-icon {
+    font-size: 1.2rem; /* Tamaño de ícono ajustado */
+    margin-bottom: 4px; /* Espaciado entre ícono y texto */
+  }

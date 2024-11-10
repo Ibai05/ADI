@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import('../subtab4/subtab4.module').then(m => m.Subtab4PageModule)
       },
       {
+        path: 'subtab5',
+        loadChildren: () => import('../subtab5/subtab5.module').then(m => m.Subtab5PageModule)
+      },
+      {
         path: '',
         redirectTo: 'subtab1',
         pathMatch: 'full'

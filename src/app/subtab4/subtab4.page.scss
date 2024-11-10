@@ -1,47 +1,53 @@
+
 ion-content {
-    --padding-top: 0; 
-  }
-  
-  .basket-container {
-    padding: 16px;
-  }
-  
-  .product-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .product-item ion-thumbnail {
-    --border-radius: 8px;
-    margin-right: 16px;
-  }
-  
-  .product-item h2 {
-    font-size: 18px;
-    margin: 0;
-  }
-  
-  .quantity {
-    margin: 0 8px;
-    font-weight: bold;
-  }
-  
-  .summary {
-    padding: 16px 0;
-    text-align: center;
-  }
-  
-  .summary ion-item {
-    --background: transparent;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .summary ion-button {
-    margin-top: 16px;
-  }
-  
+  --padding-top: 0;
+}
+
+.basket-container {
+  padding: 16px;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px); /* Para que sea deslizable */
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-item ion-thumbnail {
+  --border-radius: 8px;
+  margin-right: 12px;
+}
+
+.empty-basket {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+  margin-top: 50px;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+.footer-total {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f8f8;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.quantity {
+  margin: 0 8px;
+  font-weight: bold;
+}
