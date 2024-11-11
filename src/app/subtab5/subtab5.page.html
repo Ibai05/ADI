@@ -20,22 +20,24 @@
     <ion-card class="product-card" *ngFor="let videojuego of videojuegosDestacados">
       <ion-img [src]="videojuego.imagen" alt="Videojuego" class="product-img"></ion-img>
       <ion-card-content>
-        <h2 class="product-title">{{ videojuego.nombre }}</h2>
-        <p class="price">{{ videojuego.precio | currency: 'EUR' }}</p>
+        <h2 class="product-title">{{ videojuego.nombre_producto }}</h2>
+        <p class="price">Compra: {{ videojuego.precio_venta | currency: 'EUR' }}</p>
+        <p class="price">Alquiler: {{ videojuego.precio_alquiler | currency: 'EUR' }}</p>
       </ion-card-content>
     </ion-card>
   </div>
 
   <!-- Sección de Todos los Videojuegos en Alquiler -->
-  <h3 class="section-title">Todos los Videojuegos en Alquiler</h3>
+  <h3 class="section-title">Todos los Videojuegos</h3>
   <ion-grid class="compact-grid">
     <ion-row>
       <ion-col size="4" size-md="3" size-lg="2" *ngFor="let videojuego of videojuegosFiltrados">
         <ion-card class="product-card">
           <ion-img [src]="videojuego.imagen" alt="Videojuego" class="product-img"></ion-img>
           <ion-card-content>
-            <h2 class="product-title">{{ videojuego.nombre }}</h2>
-            <p class="price">{{ videojuego.precio | currency: 'EUR' }}</p>
+            <h2 class="product-title">{{ videojuego.nombre_producto}}</h2>
+            <p class="price">Compra: {{ videojuego.precio_venta | currency: 'EUR' }}</p>
+            <p class="price">Alquiler: {{ videojuego.precio_alquiler | currency: 'EUR' }}</p>
           </ion-card-content>
         </ion-card>
       </ion-col>

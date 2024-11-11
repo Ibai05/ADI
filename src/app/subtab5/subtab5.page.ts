@@ -1,5 +1,5 @@
-
 import { Component, OnInit } from '@angular/core';
+import { ProductoService } from '../services/producto.service';
 
 @Component({
   selector: 'app-subtab5',
@@ -7,28 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./subtab5.page.scss'],
 })
 export class Subtab5Page implements OnInit {
-  videojuegos = [
-    { nombre: 'Resident Evil Village', precio: 19.99, tipo: 'Miedo', imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'The Legend of Zelda', precio: 24.99, tipo: 'Aventura', imagen: 'assets/img/zelda.jpg' },
-    { nombre: 'Cyberpunk 2077', precio: 29.99, tipo: 'Ciencia Ficción', imagen: 'assets/img/cyberpunk.jpg' },
-    { nombre: 'Silent Hill', precio: 14.99, tipo: 'Miedo', imagen: 'assets/img/silenthill.jpg' },
-    { nombre: 'FIFA 23', precio: 9.99, tipo: 'Deportes', imagen: 'assets/img/fifa23.jpg' },
-    { nombre: 'Call of Duty', precio: 19.99, tipo: 'Acción', imagen: 'assets/img/cod.jpg' },
-    { nombre: 'Halo Infinite', precio: 19.99, tipo: 'Acción', imagen: 'assets/img/halo.jpg' },
-    { nombre: 'Super Mario Odyssey', precio: 24.99, tipo: 'Aventura', imagen: 'assets/img/mario.jpg' },
-    // Agrega más productos según sea necesario
-  ];
-
-  tiposVideojuegos = ['Miedo', 'Aventura', 'Ciencia Ficción', 'Deportes', 'Acción'];
+  videojuegos: any[] = [];
+  tiposVideojuegos: string[] = [];
   filtroSeleccionado = 'todos';
-  videojuegosFiltrados: { nombre: string; precio: number; tipo: string; imagen: string; }[] = [];
-  videojuegosDestacados: { nombre: string; precio: number; tipo: string; imagen: string; }[] = [];
+  videojuegosFiltrados: any[] = [];
+  videojuegosDestacados: any[] = [];
 
-  constructor() { }
+  constructor(private productoService: ProductoService) { }
 
   ngOnInit() {
-    this.videojuegosFiltrados = this.videojuegos; // Mostrar todos por defecto
-    this.videojuegosDestacados = this.videojuegos.slice(0, 8); // Mostrar los primeros 8 como destacados
+    this.productoService.getVideojuegos().subscribe({
+      next: (data) => {
+        this.videojuegos = data;
+        this.tiposVideojuegos = [...new Set(this.videojuegos.map(videojuego => videojuego.tipo))];
+        this.videojuegosFiltrados = this.videojuegos;
+        this.videojuegosDestacados = this.videojuegos.slice(0, 8);
+      },
+      error: (error) => {
+        console.error('Error al cargar videojuegos:', error);
+      }
+    });
   }
 
   filtrarVideojuegos() {
