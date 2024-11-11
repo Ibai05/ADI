@@ -36,4 +36,5 @@ export class Subtab5Page implements OnInit {
       this.videojuegosFiltrados = this.videojuegos.filter(videojuego => videojuego.tipo === this.filtroSeleccionado);
     }
   }
+  
 }

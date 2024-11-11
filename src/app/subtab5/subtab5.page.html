@@ -17,7 +17,7 @@
   <!-- Sección de Videojuegos Destacados con Scroll Horizontal -->
   <h3 class="section-title">Top Videojuegos</h3>
   <div class="horizontal-scroll">
-    <ion-card class="product-card" *ngFor="let videojuego of videojuegosDestacados">
+    <ion-card class="product-card" *ngFor="let videojuego of videojuegosFiltrados" [routerLink]="['/detalle', videojuego.id]">
       <ion-img [src]="videojuego.imagen" alt="Videojuego" class="product-img"></ion-img>
       <ion-card-content>
         <h2 class="product-title">{{ videojuego.nombre_producto }}</h2>
@@ -25,6 +25,7 @@
         <p class="price">Alquiler: {{ videojuego.precio_alquiler | currency: 'EUR' }}</p>
       </ion-card-content>
     </ion-card>
+    
   </div>
 
   <!-- Sección de Todos los Videojuegos en Alquiler -->

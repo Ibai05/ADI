@@ -33,13 +33,14 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
-  },  {
+  },
+  {
     path: 'subtab5',
     loadChildren: () => import('./subtab5/subtab5.module').then( m => m.Subtab5PageModule)
   },
   {
-    path: 'detalle',
-    loadChildren: () => import('./detalle/detalle.module').then( m => m.DetallePageModule)
+    path: 'detalle/:id',  
+    loadChildren: () => import('./detalle/detalle.module').then(m => m.DetallePageModule)
   },
 
 

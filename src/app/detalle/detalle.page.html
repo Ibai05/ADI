@@ -1,13 +1,15 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>detalle</ion-title>
+    <ion-title>{{ videojuego?.nombre_producto }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detalle</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-img [src]="videojuego?.imagen" alt="Videojuego"></ion-img>
+  <ion-card-content>
+    <h2>{{ videojuego?.nombre_producto }}</h2>
+    <p>{{ videojuego?.descripcion }}</p>
+    <p>Compra: {{ videojuego?.precio_venta | currency: 'EUR' }}</p>
+    <p>Alquiler: {{ videojuego?.precio_alquiler | currency: 'EUR' }}</p>
+  </ion-card-content>
 </ion-content>

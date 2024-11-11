@@ -13,4 +13,5 @@ export class ProductoService {
   getVideojuegos(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+
 }
