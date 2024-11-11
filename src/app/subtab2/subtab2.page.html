@@ -1,22 +1,35 @@
 <ion-content>
-    <ion-header collapse="condense">
-      <ion-toolbar>
-        <ion-title size="large">Consolas</ion-title>
-      </ion-toolbar>
-    </ion-header>
-  
-    <!-- Lista de consolas -->
-    <ion-grid class="compact-grid">
-      <ion-row>
-        <ion-col size="6" size-md="4" size-lg="3" *ngFor="let consola of consolas">
-          <ion-card class="product-card">
-            <ion-img [src]="consola.imagen" alt="Consola" class="product-img"></ion-img>
-            <ion-card-content>
-              <h2 class="product-title">{{ consola.nombre }}</h2>
-              <p class="price">{{ consola.precio | currency: 'EUR' }}</p>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="ion-text-center">Consolas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Sección de Consolas Destacadas con Scroll Horizontal -->
+  <h3 class="section-title">Top Consolas</h3>
+  <div class="horizontal-scroll">
+    <ion-card class="product-card" *ngFor="let consola of consolas" [routerLink]="['/detalle', consola.id]">
+      <ion-img [src]="consola.imagen" alt="Consola" class="product-img"></ion-img>
+      <ion-card-content>
+        <h2 class="product-title">{{ consola.nombre_producto }}</h2>
+        <p class="price">Compra: {{ consola.precio_venta | currency: 'EUR' }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Sección de Todas las Consolas -->
+  <h3 class="section-title">Todas las Consolas</h3>
+  <ion-grid class="compact-grid">
+    <ion-row>
+      <ion-col size="4" size-md="3" size-lg="2" *ngFor="let consola of consolas">
+        <ion-card class="product-card">
+          <ion-img [src]="consola.imagen" alt="Consola" class="product-img"></ion-img>
+          <ion-card-content>
+            <h2 class="product-title">{{ consola.nombre_producto }}</h2>
+            <p class="price">Compra: {{ consola.precio_venta | currency: 'EUR' }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
