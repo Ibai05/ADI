@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'subtab1',
-    loadChildren: () => import('./subtab1/subtab1.module').then( m => m.Subtab1PageModule)
+    loadChildren: () => import('./subtab1/subtab1.module').then(m => m.Subtab1PageModule)
   },
   {
     path: 'subtab2',
@@ -28,12 +28,13 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () => import('./registro/registro.module').then(m => m.RegisterPageModule)
   },
   {
     path: 'tabs',
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
-  },  {
+  },
+  {
     path: 'subtab5',
     loadChildren: () => import('./subtab5/subtab5.module').then( m => m.Subtab5PageModule)
   },
@@ -43,7 +44,7 @@ const routes: Routes = [
   },
 
 
-  
+
 ];
 @NgModule({
   imports: [

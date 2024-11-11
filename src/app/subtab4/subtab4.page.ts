@@ -1,5 +1,6 @@
-
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service'; // Asegúrate de que la ruta sea correcta
 
 @Component({
   selector: 'app-subtab4',
@@ -12,11 +13,11 @@ export class Subtab4Page implements OnInit {
     // Más productos de compra...
   ];
   productosAlquiler = [
-    { nombre: 'Producto Alquiler 1', precio: 49.99, cantidad: 1, imagen:'assets/img/residentevil.jpg', tipo: 'alquiler' },
+    { nombre: 'Producto Alquiler 1', precio: 49.99, cantidad: 1, imagen: 'assets/img/residentevil.jpg', tipo: 'alquiler' },
     // Más productos de alquiler...
   ];
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() { }
 
@@ -42,6 +43,10 @@ export class Subtab4Page implements OnInit {
   }
 
   procederPago() {
-    alert('Proceder al pago no está implementado todavía.');
+    if (this.authService.isLoggedIn()) {
+      alert('Proceder al pago no está implementado todavía.');
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }
