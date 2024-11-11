@@ -42,9 +42,10 @@ const routes: Routes = [
     path: 'detalle/:id',  
     loadChildren: () => import('./detalle/detalle.module').then(m => m.DetallePageModule)
   },
-
-
-  
+  {
+    path: 'buscar',
+    loadChildren: () => import('./buscar/buscar.module').then( m => m.BuscarPageModule)
+  },
 ];
 @NgModule({
   imports: [

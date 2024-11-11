@@ -1,17 +1,16 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+<ion-content>
+  <div class="carousel-container">
+    <ion-img [src]="imagenes[currentIndex]" class="carousel-image"></ion-img>
+
+    <!-- Botones de navegación -->
+    <ion-button (click)="prevImage()" fill="clear" class="carousel-button prev-button">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="nextImage()" fill="clear" class="carousel-button next-button">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-button>
+  </div>
 </ion-content>

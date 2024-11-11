@@ -32,6 +32,10 @@ const routes: Routes = [
         loadChildren: () => import('../detalle/detalle.module').then(m => m.DetallePageModule)
       },
       {
+        path: 'buscar',
+        loadChildren: () => import('../buscar/buscar.module').then( m => m.BuscarPageModule)
+      },
+      {
         path: '',
         redirectTo: 'subtab1',
         pathMatch: 'full'
