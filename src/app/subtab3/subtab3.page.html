@@ -1,64 +1,32 @@
-<ion-content>
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Smartphones y Tablets</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Smartphones</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <!-- Sección: Smartphones y Tablets con scroll horizontal -->
-  <h3 class="section-title">Smartphones y Tablets</h3>
+<ion-content>
+  <!-- Sección de smartphones destacados con scroll horizontal -->
+  <h3 class="section-title">Top Smartphones</h3>
   <div class="horizontal-scroll">
-    <ion-card class="product-card" *ngFor="let dispositivo of dispositivos">
-      <ion-img [src]="dispositivo.imagen" alt="Dispositivo" class="product-img"></ion-img>
+    <ion-card class="product-card" *ngFor="let smartphone of smartphones" [routerLink]="['/detalle', smartphone.id]">
+      <ion-img [src]="smartphone.imagen" alt="Smartphone" class="product-img"></ion-img>
       <ion-card-content>
-        <h2 class="product-title">{{ dispositivo.nombre }}</h2>
-        <p class="price">{{ dispositivo.precio | currency: 'EUR' }}</p>
+        <h2 class="product-title">{{ smartphone.nombre_producto }}</h2>
+        <p class="price">Compra: {{ smartphone.precio_venta | currency: 'EUR' }}</p>
       </ion-card-content>
     </ion-card>
   </div>
 
-  <!-- Sección: Solo Tablets -->
-  <h3 class="section-title">Tablets</h3>
-  <ion-grid class="compact-grid">
-    <ion-row>
-      <ion-col size="6" size-md="3" *ngFor="let tablet of tablets">
-        <ion-card class="product-card">
-          <ion-img [src]="tablet.imagen" alt="Tablet" class="product-img"></ion-img>
-          <ion-card-content>
-            <h2 class="product-title">{{ tablet.nombre }}</h2>
-            <p class="price">{{ tablet.precio | currency: 'EUR' }}</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <!-- Sección: Solo iPhones -->
-  <h3 class="section-title">iPhones</h3>
-  <ion-grid class="compact-grid">
-    <ion-row>
-      <ion-col size="6" size-md="3" *ngFor="let iphone of iphones">
-        <ion-card class="product-card">
-          <ion-img [src]="iphone.imagen" alt="iPhone" class="product-img"></ion-img>
-          <ion-card-content>
-            <h2 class="product-title">{{ iphone.nombre }}</h2>
-            <p class="price">{{ iphone.precio | currency: 'EUR' }}</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <!-- Sección: Todos los Smartphones -->
+  <!-- Sección de todos los smartphones -->
   <h3 class="section-title">Todos los Smartphones</h3>
   <ion-grid class="compact-grid">
     <ion-row>
-      <ion-col size="6" size-md="3" *ngFor="let smartphone of smartphones">
+      <ion-col size="4" size-md="3" size-lg="2" *ngFor="let smartphone of smartphones">
         <ion-card class="product-card">
           <ion-img [src]="smartphone.imagen" alt="Smartphone" class="product-img"></ion-img>
           <ion-card-content>
-            <h2 class="product-title">{{ smartphone.nombre }}</h2>
-            <p class="price">{{ smartphone.precio | currency: 'EUR' }}</p>
+            <h2 class="product-title">{{ smartphone.nombre_producto }}</h2>
+            <p class="price">Compra: {{ smartphone.precio_venta | currency: 'EUR' }}</p>
           </ion-card-content>
         </ion-card>
       </ion-col>

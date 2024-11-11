@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductoService } from '../services/producto.service';
+import { ConsolasService } from '../services/consolas.service';
+import { SmartphoneService } from '../services/smartphone.service';
 
 @Component({
   selector: 'app-subtab1',
@@ -6,64 +9,52 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./subtab1.page.scss'],
 })
 export class Subtab1Page implements OnInit {
-  topProductos = [
-    { nombre: 'Laptop Gaming', precio: 999.99, imagen:'assets/img/residentevil.jpg' },
-    { nombre: 'Teclado Mecánico', precio: 89.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Auriculares Pro', precio: 129.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Mouse RGB', precio: 49.99, imagen:'assets/img/residentevil.jpg' },
-    { nombre: 'Laptop Gaming', precio: 999.99, imagen:'assets/img/residentevil.jpg' },
-    { nombre: 'Teclado Mecánico', precio: 89.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Auriculares Pro', precio: 129.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Mouse RGB', precio: 49.99, imagen:'assets/img/residentevil.jpg' }
+  videojuegos: any[] = [];
+  consolas: any[] = [];
+  smartphones: any[] = [];
 
-  ];
-
-  productosRecomendados = [
-    { nombre: 'Monitor UltraWide', precio: 299.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Smartwatch', precio: 199.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Cámara 4K', precio: 499.99, imagen:'assets/img/residentevil.jpg' },
-    { nombre: 'Monitor UltraWide', precio: 299.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Smartwatch', precio: 199.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Cámara 4K', precio: 499.99, imagen:'assets/img/residentevil.jpg' },
-    { nombre: 'Monitor UltraWide', precio: 299.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Cámara 4K', precio: 499.99, imagen:'assets/img/residentevil.jpg' }
-  ];
-
-  topConsolas = [
-    { nombre: 'PlayStation 5', precio: 499.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Xbox Series X', precio: 499.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Nintendo Switch', precio: 299.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'PlayStation 5', precio: 499.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Xbox Series X', precio: 499.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Nintendo Switch', precio: 299.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'PlayStation 5', precio: 499.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Nintendo Switch', precio: 299.99, imagen: 'assets/img/residentevil.jpg' }
-  ];
-
-  juegosAlquilados = [
-    { nombre: 'The Legend of Zelda', precio: 19.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Cyberpunk 2077', precio: 24.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Resident Evil Village', precio: 29.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'The Legend of Zelda', precio: 19.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Cyberpunk 2077', precio: 24.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Resident Evil Village', precio: 29.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'The Legend of Zelda', precio: 19.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Resident Evil Village', precio: 29.99, imagen: 'assets/img/residentevil.jpg' }
-  ];
-
-  smartphones = [
-    { nombre: 'iPhone 14', precio: 1099.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Samsung Galaxy S22', precio: 999.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Google Pixel 7', precio: 799.99, imagen:'assets/img/residentevil.jpg' },
-    { nombre: 'iPhone 14', precio: 1099.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Samsung Galaxy S22', precio: 999.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Google Pixel 7', precio: 799.99, imagen:'assets/img/residentevil.jpg' },
-    { nombre: 'iPhone 14', precio: 1099.99, imagen: 'assets/img/residentevil.jpg' },
-    { nombre: 'Google Pixel 7', precio: 799.99, imagen:'assets/img/residentevil.jpg' }
-  ];
-
-  constructor() { }
+  constructor(
+    private productoService: ProductoService,
+    private consolasService: ConsolasService,
+    private smartphoneService: SmartphoneService
+  ) {}
 
   ngOnInit() {
+    this.getVideojuegos();
+    this.getConsolas();
+    this.getSmartphones();
+  }
+
+  getVideojuegos() {
+    this.productoService.getVideojuegos().subscribe(
+      (data) => {
+        this.videojuegos = data;
+      },
+      (error) => {
+        console.error('Error al cargar los videojuegos recientes', error);
+      }
+    );
+  }
+
+  getConsolas() {
+    this.consolasService.getConsolas().subscribe(
+      (data) => {
+        this.consolas = data;
+      },
+      (error) => {
+        console.error('Error al cargar las consolas recientes', error);
+      }
+    );
+  }
+
+  getSmartphones() {
+    this.smartphoneService.getSmartphones().subscribe(
+      (data) => {
+        this.smartphones = data;
+      },
+      (error) => {
+        console.error('Error al cargar los smartphones recientes', error);
+      }
+    );
   }
 }

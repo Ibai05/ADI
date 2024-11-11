@@ -1,72 +1,157 @@
+/* Fondo general del body */
+body {
+  background-color: #ffffff; /* Fondo blanco para toda la página */
+  color: #333; /* Texto oscuro para buen contraste */
+  font-family: 'Arial', sans-serif; /* Fuente sans-serif */
+  margin: 0;
+  padding: 0;
+}
+
+/* Título de la sección */
 .section-title {
-    font-size: 1.3rem;
-    margin: 15px 0 5px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .horizontal-scroll {
-    display: flex;
-    overflow-x: auto;
-    padding: 5px 0;
-    gap: 5px; /* Reduce el espacio entre productos */
-    scroll-snap-type: x mandatory;
-  }
-  
-  .compact-grid {
-    --ion-grid-padding: 0;
-    --ion-grid-column-padding: 5px; /* Reduce al mínimo la separación entre columnas */
-  }
-  
-  .no-padding {
-    padding: 0;
-  }
-  
-  .no-margin {
-    margin: 0;
-  }
-  
+  font-size: 1.5rem;
+  margin: 20px 15px 10px;
+  font-weight: bold;
+  color: #555; /* Texto gris oscuro para un estilo claro */
+}
+
+/* Contenedor de productos con desplazamiento horizontal */
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 15px;
+  gap: 10px; /* Espaciado entre productos */
+  scroll-snap-type: x mandatory;
+  background-color: #f9f9f9; /* Fondo claro para que resalten las tarjetas */
+  border-radius: 10px; /* Bordes redondeados en el contenedor */
+}
+
+/* Estilo de las tarjetas de productos */
+.product-card {
+  flex: 0 0 auto;
+  width: 160px;
+  max-width: 200px;
+  background-color: #ffffff; /* Fondo blanco para las tarjetas */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacar las tarjetas */
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  scroll-snap-align: start;
+  border: 1px solid #e0e0e0; /* Borde suave para las tarjetas */
+  display: flex;
+  flex-direction: column; /* Para que los contenidos no se expandan horizontalmente */
+  height: 100%; /* Para que las tarjetas tengan una altura consistente */
+}
+
+/* Efecto hover en las tarjetas */
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al pasar el mouse */
+}
+
+/* Estilo de la imagen del producto */
+.product-img {
+  object-fit: cover;
+  height: 140px;
+  width: 100%;
+}
+
+/* Título del producto */
+.product-title {
+  font-size: 1rem; /* Ajuste del tamaño de fuente para el título */
+  font-weight: 600;
+  margin: 8px 0 4px;
+  color: #333; /* Texto oscuro para una mejor legibilidad */
+  overflow: hidden;
+  white-space: nowrap; /* Evita que el texto se desborde */
+  text-overflow: ellipsis; /* Añade "..." al final si el texto es demasiado largo */
+  max-width: 100%; /* Asegura que el texto no sobrepase el ancho de la tarjeta */
+}
+
+/* Precio del producto */
+.price {
+  color: #4caf50; /* Verde para el precio */
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Ajustes para todos los tamaños de pantalla */
+ion-grid {
+  padding: 0;
+}
+
+/* En móviles, muestra 3 productos por fila (33% del ancho cada uno) */
+@media (max-width: 768px) {
   .product-card {
-    flex: 0 0 auto;
-    width: 160px;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s;
+    width: 120px; /* Tamaño más pequeño para móviles */
+    max-width: 140px;
   }
-  
-  .product-card:hover {
-    transform: translateY(-2px);
-  }
-  
+
   .product-img {
-    object-fit: cover;
-    height: 160px;
-    width: 100%;
+    height: 120px;
   }
-  
+
   .product-title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 4px 0 2px;
-    color: #000;
+    font-size: 0.9rem; /* Título más pequeño */
   }
-  
+
   .price {
-    color: #4caf50;
-    font-size: 0.9rem;
-    font-weight: bold;
+    font-size: 0.8rem; /* Precio más pequeño */
   }
-  
-  /* Ajustes para móviles */
-  @media (max-width: 768px) {
-    .product-card {
-      margin: 0;
-    }
-  
-    .product-img {
-      height: 140px;
-    }
+
+  ion-col {
+    width: 33.33%; /* 3 productos por fila */
   }
+}
+
+/* En pantallas medianas, como tablets, 4 productos por fila */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .product-card {
+    width: 160px; /* Tamaño más grande para tablets */
+    max-width: 200px;
+  }
+
+  .product-img {
+    height: 140px;
+  }
+
+  .product-title {
+    font-size: 1rem; /* Título en tamaño normal */
+  }
+
+  .price {
+    font-size: 0.9rem; /* Precio más grande */
+  }
+
+  ion-col {
+    width: 25%; /* 4 productos por fila */
+  }
+}
+
+/* En pantallas grandes, como escritorios, 6 productos por fila */
+@media (min-width: 1024px) {
+  .section-title {
+    font-size: 1.75rem; /* Tamaño de texto más grande para el título */
+  }
+
+  .product-card {
+    width: 180px; /* Aumenta el tamaño de la tarjeta para pantallas grandes */
+    max-width: 220px;
+  }
+
+  .product-img {
+    height: 160px;
+  }
+
+  .product-title {
+    font-size: 1.1rem;
+  }
+
+  .price {
+    font-size: 1rem;
+  }
+
+  ion-col {
+    width: 16.66%; /* 6 productos por fila */
+  }
+}

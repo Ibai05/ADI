@@ -1,67 +1,42 @@
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Para ti</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <!-- Sección: Top productos -->
-  <h3 class="section-title">Top productos</h3>
+<ion-content>
+
+  <!-- Videojuegos más recientes con scroll horizontal -->
+  <h3 class="section-title">Videojuegos Más Recientes</h3>
   <div class="horizontal-scroll">
-    <ion-card class="product-card" *ngFor="let producto of topProductos">
-      <ion-img [src]="producto.imagen" alt="Producto" class="product-img"></ion-img>
+    <ion-card class="product-card" *ngFor="let videojuego of videojuegos" [routerLink]="['/detalle', videojuego.id]">
+      <ion-img [src]="videojuego.imagen" alt="Videojuego" class="product-img"></ion-img>
       <ion-card-content>
-        <h2 class="product-title">{{ producto.nombre }}</h2>
-        <p class="price">{{ producto.precio | currency: 'EUR' }}</p>
+        <h2 class="product-title">{{ videojuego.nombre_producto }}</h2>
+        <p class="price">Compra: {{ videojuego.precio_venta | currency: 'EUR' }}</p>
+        <p class="price">Alquiler: {{ videojuego.precio_alquiler | currency: 'EUR' }}</p>
       </ion-card-content>
     </ion-card>
   </div>
 
-  <!-- Sección: Productos recomendados -->
-  <h3 class="section-title">Productos recomendados</h3>
+  <!-- Consolas más recientes con scroll horizontal -->
+  <h3 class="section-title">Consolas Más Recientes</h3>
   <div class="horizontal-scroll">
-    <ion-card class="product-card" *ngFor="let producto of productosRecomendados">
-      <ion-img [src]="producto.imagen" alt="Producto" class="product-img"></ion-img>
-      <ion-card-content>
-        <h2 class="product-title">{{ producto.nombre }}</h2>
-        <p class="price">{{ producto.precio | currency: 'EUR' }}</p>
-      </ion-card-content>
-    </ion-card>
-  </div>
-
-  <!-- Sección: Top consolas -->
-  <h3 class="section-title">Top consolas</h3>
-  <div class="horizontal-scroll">
-    <ion-card class="product-card" *ngFor="let consola of topConsolas">
+    <ion-card class="product-card" *ngFor="let consola of consolas" [routerLink]="['/detalle', consola.id]">
       <ion-img [src]="consola.imagen" alt="Consola" class="product-img"></ion-img>
       <ion-card-content>
-        <h2 class="product-title">{{ consola.nombre }}</h2>
-        <p class="price">{{ consola.precio | currency: 'EUR' }}</p>
+        <h2 class="product-title">{{ consola.nombre_producto }}</h2>
+        <p class="price">Compra: {{ consola.precio_venta | currency: 'EUR' }}</p>
       </ion-card-content>
     </ion-card>
   </div>
 
-  <!-- Sección: Videojuegos más alquilados -->
-  <h3 class="section-title">Videojuegos más alquilados</h3>
+  <!-- Smartphones más recientes con scroll horizontal -->
+  <h3 class="section-title">Smartphones Más Recientes</h3>
   <div class="horizontal-scroll">
-    <ion-card class="product-card" *ngFor="let juego of juegosAlquilados">
-      <ion-img [src]="juego.imagen" alt="Juego" class="product-img"></ion-img>
-      <ion-card-content>
-        <h2 class="product-title">{{ juego.nombre }}</h2>
-        <p class="price">{{ juego.precio | currency: 'EUR' }}</p>
-      </ion-card-content>
-    </ion-card>
-  </div>
-
-  <!-- Sección: Smartphones -->
-  <h3 class="section-title">Smartphones</h3>
-  <div class="horizontal-scroll">
-    <ion-card class="product-card" *ngFor="let smartphone of smartphones">
+    <ion-card class="product-card" *ngFor="let smartphone of smartphones" [routerLink]="['/detalle', smartphone.id]">
       <ion-img [src]="smartphone.imagen" alt="Smartphone" class="product-img"></ion-img>
       <ion-card-content>
-        <h2 class="product-title">{{ smartphone.nombre }}</h2>
-        <p class="price">{{ smartphone.precio | currency: 'EUR' }}</p>
+        <h2 class="product-title">{{ smartphone.nombre_producto }}</h2>
+        <p class="price">Compra: {{ smartphone.precio_venta | currency: 'EUR' }}</p>
+        <p class="price">Alquiler: {{ smartphone.precio_alquiler | currency: 'EUR' }}</p>
       </ion-card-content>
     </ion-card>
   </div>
+
 </ion-content>
