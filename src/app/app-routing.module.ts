@@ -45,7 +45,11 @@ const routes: Routes = [
   {
     path: 'buscar',
     loadChildren: () => import('./buscar/buscar.module').then( m => m.BuscarPageModule)
+  },  {
+    path: 'subtab6',
+    loadChildren: () => import('./subtab6/subtab6.module').then( m => m.Subtab6PageModule)
   },
+
 ];
 @NgModule({
   imports: [

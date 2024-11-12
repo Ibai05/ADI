@@ -5,26 +5,43 @@
   --padding-start: 10px; /* Espacio a la izquierda */
 }
 .custom-tab-bar {
+  display: flex;
+  overflow-x: auto; /* Permite el desplazamiento horizontal */
+  white-space: nowrap; /* Evita que los botones se acomoden en múltiples líneas */
   --background: #ffffff;
   --color: #5f6368;
   --color-selected: #1a73e8;
-  border-bottom: 2px solid #cccccc; 
+  border-bottom: 2px solid #cccccc;
+  justify-content: flex-start; /* Alinea los botones a la izquierda */
+}
+
+.custom-tab-bar::-webkit-scrollbar {
+  display: none; /* Oculta la barra de desplazamiento */
 }
 
 ion-tab-button {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
+  flex: 0 0 auto; /* Evita que los botones se ajusten */
+  min-width: 60px; /* Tamaño reducido para los botones */
+  padding: 4px 8px; /* Espaciado reducido para los botones */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el icono y el texto dentro del botón */
+  justify-content: center;
+}
+
+ion-tab-button ion-icon {
+  font-size: 1rem; /* Reduce el tamaño de los íconos */
+  margin-bottom: 2px; /* Ajusta el margen inferior para los íconos */
 }
 
 ion-tab-button ion-label {
-  font-size: 0.9rem;
+  font-size: 0.8rem; /* Reduce el tamaño de la fuente del texto */
 }
 
 ion-tab-button[selected] {
   color: var(--color-selected);
 }
 
-ion-tab-button ion-icon {
-  font-size: 1.2rem;
-  margin-bottom: 4px;
-}
+

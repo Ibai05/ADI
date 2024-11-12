@@ -28,6 +28,10 @@ const routes: Routes = [
         loadChildren: () => import('../subtab5/subtab5.module').then(m => m.Subtab5PageModule)
       },
       {
+        path: 'subtab6',
+        loadChildren: () => import('../subtab6/subtab6.module').then(m => m.Subtab6PageModule)
+      },
+      {
         path: 'detalle/:id',  
         loadChildren: () => import('../detalle/detalle.module').then(m => m.DetallePageModule)
       },
