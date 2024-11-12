@@ -8,11 +8,16 @@
   <!-- Sección de Consolas Destacadas con Scroll Horizontal -->
   <h3 class="section-title">Top Consolas</h3>
   <div class="horizontal-scroll">
-    <ion-card class="product-card" *ngFor="let consola of consolas" [routerLink]="['/detalle', consola.id]">
+    <ion-card class="product-card" *ngFor="let consola of consolas" >
       <ion-img [src]="consola.imagen" alt="Consola" class="product-img"></ion-img>
       <ion-card-content>
         <h2 class="product-title">{{ consola.nombre_producto }}</h2>
         <p class="price">Compra: {{ consola.precio_venta | currency: 'EUR' }}</p>
+        <div class="button-container">
+          <ion-button color="success" size="small">
+            <ion-icon slot="start" name="cart"></ion-icon> 
+          </ion-button>
+        </div>
       </ion-card-content>
     </ion-card>
   </div>
@@ -27,6 +32,11 @@
           <ion-card-content>
             <h2 class="product-title">{{ consola.nombre_producto }}</h2>
             <p class="price">Compra: {{ consola.precio_venta | currency: 'EUR' }}</p>
+            <div class="button-container">
+              <ion-button color="success" size="small">
+                <ion-icon slot="start" name="cart"></ion-icon> 
+              </ion-button>
+            </div>
           </ion-card-content>
         </ion-card>
       </ion-col>

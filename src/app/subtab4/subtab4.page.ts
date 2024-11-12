@@ -1,5 +1,5 @@
-
 import { Component, OnInit } from '@angular/core';
+import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
   selector: 'app-subtab4',
@@ -16,9 +16,26 @@ export class Subtab4Page implements OnInit {
     // Más productos de alquiler...
   ];
 
-  constructor() { }
+  constructor(private productoService: ProductoService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
+
+  // Función para agregar productos a la cesta
+  agregarACesta(consola: any) {
+    const productoExistente = this.productosCesta.find(p => p.nombre === consola.nombre_producto);
+    
+    if (productoExistente) {
+      productoExistente.cantidad += 1; // Si ya existe, incrementa la cantidad
+    } else {
+      this.productosCesta.push({
+        nombre: consola.nombre_producto,
+        precio: consola.precio_venta,
+        cantidad: 1,
+        imagen: consola.imagen,
+        tipo: 'compra'
+      });
+    }
+  }
 
   actualizarCantidad(producto: any, cambio: number) {
     const nuevaCantidad = producto.cantidad + cambio;
