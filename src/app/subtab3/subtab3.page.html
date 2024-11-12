@@ -8,6 +8,11 @@
       <ion-card-content>
         <h2 class="product-title">{{ smartphone.nombre_producto }}</h2>
         <p class="price">Compra: {{ smartphone.precio_venta | currency: 'EUR' }}</p>
+        <div class="button-container">
+          <ion-button color="success" size="small">
+            <ion-icon slot="start" name="cart"></ion-icon> 
+          </ion-button>
+        </div>
       </ion-card-content>
     </ion-card>
   </div>
@@ -22,6 +27,11 @@
           <ion-card-content>
             <h2 class="product-title">{{ smartphone.nombre_producto }}</h2>
             <p class="price">Compra: {{ smartphone.precio_venta | currency: 'EUR' }}</p>
+            <div class="button-container">
+              <ion-button color="success" size="small">
+                <ion-icon slot="start" name="cart"></ion-icon> 
+              </ion-button>
+            </div>
           </ion-card-content>
         </ion-card>
       </ion-col>
