@@ -1,19 +1,29 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 
-@Injectable()
-export class JwtInterceptor implements HttpInterceptor {
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const jwt = localStorage.getItem('jwt');
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+  private apiUrl = 'https://adiapp.duckdns.org/auth';
 
-    if (jwt) {
-      request = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${jwt}`  // Corrección: usa backticks para interpolar jwt
-        }
-      });
-    }
-    return next.handle(request);
+  constructor(private http: HttpClient) {}
+
+  login(email: string, password: string): Observable<{ token: string }> {
+    const payload = { email, password };
+    return this.http.post<{ token: string }>(this.apiUrl, payload).pipe(
+      tap(response => {
+        // Guarda el token en localStorage
+        localStorage.setItem('jwt', response.token);
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    console.error('Error en la autenticación:', error);
+    return throwError(() => new Error('Error en la autenticación'));
   }
 }
