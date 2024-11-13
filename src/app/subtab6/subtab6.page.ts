@@ -1,6 +1,6 @@
-// src/app/subtab6/subtab6.page.ts
 import { Component, OnInit } from '@angular/core';
-import { ReparacionService } from '../services/reparacion.service';
+import { ConsolasService } from '../services/consolas.service';
+import { SmartphoneService } from '../services/smartphone.service';
 
 @Component({
   selector: 'app-subtab6',
@@ -8,15 +8,28 @@ import { ReparacionService } from '../services/reparacion.service';
   styleUrls: ['./subtab6.page.scss'],
 })
 export class Subtab6Page implements OnInit {
-  productos: any[] = [];
+  productos: { id: number; nombre_producto: string }[] = [];
   productoSeleccionado: string = '';
   descripcion: string = '';
 
-  constructor(private productoService: ReparacionService) {}
+  constructor(
+    private consolasService: ConsolasService,
+    private smartphoneService: SmartphoneService
+  ) {}
 
   ngOnInit() {
-    this.productoService.getProductos().subscribe((data) => {
-      this.productos = data;
+    this.cargarProductos();
+  }
+
+  cargarProductos() {
+    this.consolasService.getConsolas().subscribe((consolas) => {
+      this.smartphoneService.getSmartphones().subscribe((smartphones) => {
+        // Combina consolas y smartphones extrayendo solo id y nombre_producto
+        this.productos = [
+          ...consolas.map((c) => ({ id: c.id, nombre_producto: c.nombre_producto })),
+          ...smartphones.map((s) => ({ id: s.id, nombre_producto: s.nombre_producto }))
+        ];
+      });
     });
   }
 
