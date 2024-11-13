@@ -4,6 +4,19 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: '/login',  // Redirige a la página de login cuando la app arranca
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
@@ -23,18 +36,6 @@ const routes: Routes = [
     loadChildren: () => import('./subtab4/subtab4.module').then( m => m.Subtab4PageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
-  {
-    path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },
-  {
-    path: 'tabs',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
-  },
-  {
     path: 'subtab5',
     loadChildren: () => import('./subtab5/subtab5.module').then( m => m.Subtab5PageModule)
   },
@@ -45,12 +46,13 @@ const routes: Routes = [
   {
     path: 'buscar',
     loadChildren: () => import('./buscar/buscar.module').then( m => m.BuscarPageModule)
-  },  {
+  },
+  {
     path: 'subtab6',
     loadChildren: () => import('./subtab6/subtab6.module').then( m => m.Subtab6PageModule)
-  },
-
+  }
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
