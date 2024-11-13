@@ -6,7 +6,7 @@ import {Observable, catchError, map, throwError} from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://adiapp.duckdns.org/auth';
+  private apiUrl = 'https://adiapp.duckdns.org/api/auth';
   //private apiUrl = 'https://apirestadiprueba.duckdns.org/auth';
 
   constructor(private http: HttpClient) {}

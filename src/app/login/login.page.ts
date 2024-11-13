@@ -24,7 +24,7 @@ export class LoginPage {
     this.authService.login(this.email, this.password).subscribe(
       (response: { token: string }) => {
         localStorage.setItem('jwt', response.token); // Guardar el token en localStorage
-        this.router.navigate(['/subtab1']); // Redirigir a la página principal después del login
+        this.router.navigate(['tabs/tab1']); // Redirigir a la página principal después del login
       },
       (error: any) => {
         if (error.status === 401) {

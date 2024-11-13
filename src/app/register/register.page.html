@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,30 +11,31 @@
     </ion-text>
 
     <ion-item lines="none" class="input-item">
-      <ion-input id="email" type="email" placeholder="E-mail"></ion-input>
+      <ion-input [(ngModel)]="email" type="email" placeholder="E-mail"></ion-input>
     </ion-item>
 
     <ion-item lines="none" class="input-item">
-      <ion-input id="nombre" type="text" placeholder="Nombre"></ion-input>
+      <ion-input [(ngModel)]="nombre" type="text" placeholder="Nombre"></ion-input>
     </ion-item>
 
     <ion-item lines="none" class="input-item">
-      <ion-input id="apellido1" type="text" placeholder="Primer Apellido"></ion-input>
+      <ion-input [(ngModel)]="apellido1" type="text" placeholder="Primer Apellido"></ion-input>
     </ion-item>
 
     <ion-item lines="none" class="input-item">
-      <ion-input id="apellido2" type="text" placeholder="Segundo Apellido"></ion-input>
+      <ion-input [(ngModel)]="apellido2" type="text" placeholder="Segundo Apellido"></ion-input>
     </ion-item>
 
     <ion-item lines="none" class="input-item">
-      <ion-input id="direccion" type="text" placeholder="Direccion"></ion-input>
+      <ion-input [(ngModel)]="direccion" type="text" placeholder="Direccion"></ion-input>
     </ion-item>
 
     <ion-item lines="none" class="input-item">
-      <ion-input id="password" type="password" placeholder="Contraseña"></ion-input>
+      <ion-input [(ngModel)]="password" type="password" placeholder="Contraseña"></ion-input>
     </ion-item>
 
-    <ion-button expand="full" color="primary" class="register-button" id="register_button">Registrarse</ion-button>
+    <ion-button expand="full" color="primary" class="register-button" (click)="onRegister()">
+      Registrarse
+    </ion-button>
   </div>
 </ion-content>
-
