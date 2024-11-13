@@ -1,7 +1,14 @@
-
 <ion-toolbar>
-  <ion-searchbar placeholder="Buscar productos..."  debounce="500" class="searchbar-custom" ></ion-searchbar>
+  <ion-searchbar placeholder="Buscar productos..." debounce="500" class="searchbar-custom">
+    <!-- El slot="end" asegura que el icono se coloque a la derecha -->
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-searchbar>
 </ion-toolbar>
+
 <ion-content>
   <ion-tabs>
     <ion-tab-bar slot="top" class="custom-tab-bar scrollable-tab-bar">
@@ -10,29 +17,27 @@
         <ion-label>Para ti</ion-label>
       </ion-tab-button>
       <ion-tab-button tab="subtab5" routerLink="subtab5">
-        <ion-icon name="game-controller-outline" ></ion-icon>
+        <ion-icon name="game-controller-outline"></ion-icon>
         <ion-label>Videojuegos</ion-label>
       </ion-tab-button>
       <ion-tab-button tab="subtab2" routerLink="subtab2">
         <ion-icon name="tv-outline"></ion-icon>
-        <ion-label>Consolas</ion-label> <!-- Aquí corregí la etiqueta ion-label -->
+        <ion-label>Consolas</ion-label>
       </ion-tab-button>
       <ion-tab-button tab="subtab3" routerLink="subtab3">
-        <ion-icon name="phone-portrait-outline" ></ion-icon>
+        <ion-icon name="phone-portrait-outline"></ion-icon>
         <ion-label>Tablets y Smartphones</ion-label>
       </ion-tab-button>
       <ion-tab-button tab="subtab6" routerLink="subtab6">
-        <ion-icon name="construct-outline" ></ion-icon>
+        <ion-icon name="construct-outline"></ion-icon>
         <ion-label>Reparaciones</ion-label>
       </ion-tab-button>
       <ion-tab-button tab="subtab4" routerLink="subtab4">
-        <ion-icon name="cart-outline" ></ion-icon>
+        <ion-icon name="cart-outline"></ion-icon>
         <ion-label>Cesta</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
-    
   </ion-tabs>
   
   <router-outlet></router-outlet>
 </ion-content>
-
