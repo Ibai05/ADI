@@ -2,12 +2,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from "../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReparacionService {
-  private apiUrl = 'https://adiapp.duckdns.org/admin/productos/nombres-ids-tipos-consolas-smartphones';
+  private apiUrl = `${environment.apiUrl}admin/productos/nombres-ids-tipos-consolas-smartphones'`;
+
 
   constructor(private http: HttpClient) {}
 
