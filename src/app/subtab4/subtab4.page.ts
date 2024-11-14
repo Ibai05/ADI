@@ -45,7 +45,8 @@ export class Subtab4Page implements OnInit {
   calcularTotal() {
     return this.productosEnCesta.reduce((total, producto) => {
       const precio = parseFloat(producto.precio_venta);
-      return total + (isNaN(precio) ? 0 : precio);
+      const cantidad = producto.cantidad || 1;  // Asegura que la cantidad sea al menos 1 si no está definida
+      return total + (isNaN(precio) ? 0 : precio * cantidad);  // Multiplicamos precio por cantidad
     }, 0);
   }
 
