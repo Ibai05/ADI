@@ -11,20 +11,20 @@ export class Tab3Page {
     {
       name: 'Galería de Bilbao',
       description: 'Explora nuestra tienda en Bilbao con esta colección de fotos.',
-      thumbnail: 'assets/img/bilbao_thumb.jpg',
+      thumbnail: 'assets/img/almi.jpeg',
       images: [
-        'assets/img/bilbao1.jpg',
-        'assets/img/bilbao2.jpg',
-        'assets/img/bilbao3.jpg',
+        'assets/img/almi.jpeg',
+        'assets/img/almi1.jpg',
+        'assets/img/almi2.jpg',
       ],
     },
     {
       name: 'Galería de Málaga',
       description: 'Descubre nuestro espacio en Málaga y sus productos destacados.',
-      thumbnail: 'assets/img/malaga_thumb.jpg',
+      thumbnail: 'assets/img/almi3.jpg',
       images: [
-        'assets/img/malaga1.jpg',
-        'assets/img/malaga2.jpg',
+        'assets/img/almi3.jpg',
+        'assets/img/almi4.jpg',
         'assets/img/malaga3.jpg',
       ],
     },
