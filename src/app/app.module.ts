@@ -8,12 +8,20 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthService } from 'src/auth.service';
+import { TokenInterceptorService } from './services/token-interceptor.service'; // Importa TokenInterceptorService
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+  ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: HTTP_INTERCEPTORS, useClass: AuthService, multi: true }, // Añade el interceptor aquí
+    AuthService, // Proveedor para AuthService
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }, // Interceptor TokenInterceptorService
   ],
   bootstrap: [AppComponent],
 })

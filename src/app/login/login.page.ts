@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
-
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -9,29 +9,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  username: string = ''; // Cambiado de "email" a "username" para alinearse con el backend.
+  username: string = '';
   password: string = '';
   errorMessage: string | undefined;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private loadingController: LoadingController
+  ) {}
 
-  login() {
-    // Validación simple de campos vacíos
+  async login() {
     if (!this.username || !this.password) {
       this.errorMessage = 'Please enter both username and password';
       return;
     }
 
+    // Mostrar el indicador de carga mientras se procesa el inicio de sesión
+    const loading = await this.loadingController.create({
+      message: 'Logging in...',
+    });
+    await loading.present();
+
     this.authService.login(this.username, this.password).subscribe(
       (response: { token: string }) => {
         localStorage.setItem('jwt', response.token); // Guardar el token en localStorage
-        console.log('Token received:', response.token); // Mostrar el token en la consola
+        console.log('Token received:', response.token);
 
-        // Cambiar la redirección a una ruta que esté definida en tu aplicación
-        this.router.navigate(['/tabs/tab1']); // Asegúrate de que "/home" esté definido en las rutas
+        loading.dismiss(); // Cerrar el indicador de carga
+        this.router.navigate(['/tabs/tab1']); // Redirigir al usuario
       },
       (error: any) => {
-        // Manejar el error de login
+        loading.dismiss(); // Cerrar el indicador de carga en caso de error
         if (error.status === 401) {
           this.errorMessage = 'Invalid username or password';
         } else {

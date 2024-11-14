@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConsolasService } from '../services/consolas.service';
 import { SmartphoneService } from '../services/smartphone.service';
+import { ReparacionService } from '../services/reparacion.service';
 
 @Component({
   selector: 'app-subtab6',
@@ -14,7 +15,8 @@ export class Subtab6Page implements OnInit {
 
   constructor(
     private consolasService: ConsolasService,
-    private smartphoneService: SmartphoneService
+    private smartphoneService: SmartphoneService,
+    private reparacionService: ReparacionService
   ) {}
 
   ngOnInit() {
@@ -34,10 +36,28 @@ export class Subtab6Page implements OnInit {
   }
 
   onSubmit() {
-    console.log('Producto:', this.productoSeleccionado);
-    console.log('Descripción:', this.descripcion);
+    if (!this.productoSeleccionado || !this.descripcion) {
+      console.error('Por favor, selecciona un producto y escribe una descripción.');
+      return;
+    }
 
-    // Reseteamos los valores después de enviar el formulario
+    const reparacionData = {
+      id_producto: this.productoSeleccionado,
+      descripcionUsuario: this.descripcion,
+    };
+
+    this.reparacionService.crearReparacion(reparacionData).subscribe({
+      next: (response) => {
+        console.log('Reparación creada exitosamente:', response);
+        this.resetForm();
+      },
+      error: (error) => {
+        console.error('Error al crear la reparación:', error);
+      }
+    });
+  }
+
+  resetForm() {
     this.productoSeleccionado = '';
     this.descripcion = '';
   }

@@ -1,14 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Solicitar Reparación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Reparaciones</ion-card-title>
+      <ion-card-title>Formulario de Reparación</ion-card-title>
     </ion-card-header>
-    
     <ion-card-content>
       <form (submit)="onSubmit()">
-        <!-- Producto -->
+        <!-- Selección de Producto -->
         <ion-item>
-          <ion-label>Producto</ion-label>
+          <ion-label position="stacked">Seleccionar Producto</ion-label>
           <ion-select [(ngModel)]="productoSeleccionado" name="productoSeleccionado" required>
             <ion-select-option *ngFor="let producto of productos" [value]="producto.id">
               {{ producto.nombre_producto }}
@@ -16,15 +21,15 @@
           </ion-select>
         </ion-item>
 
-        <!-- Descripción -->
+        <!-- Descripción de la Reparación -->
         <ion-item>
-          <ion-label position="floating">Descripción</ion-label>
+          <ion-label position="stacked">Descripción de la Reparación</ion-label>
           <ion-textarea [(ngModel)]="descripcion" name="descripcion" required></ion-textarea>
         </ion-item>
 
-        <!-- Botón Solicitar Reparación -->
-        <ion-button expand="full" type="submit" [disabled]="!productoSeleccionado || !descripcion">
-          Solicitar Reparación
+        <!-- Botón de Enviar -->
+        <ion-button expand="full" type="submit" color="primary" [disabled]="!productoSeleccionado || !descripcion">
+          Enviar Solicitud de Reparación
         </ion-button>
       </form>
     </ion-card-content>
