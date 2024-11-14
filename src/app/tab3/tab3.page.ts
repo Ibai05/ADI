@@ -11,19 +11,19 @@ export class Tab3Page {
     {
       name: 'Galería de Bilbao',
       description: 'Explora nuestra tienda en Bilbao con esta colección de fotos.',
-      thumbnail: 'assets/img/almi.jpeg',
+      thumbnail: 'assets/img/almi3.jpg',
       images: [
-        'assets/img/almi.jpeg',
-        'assets/img/almi1.jpg',
-        'assets/img/almi2.jpg',
+        'assets/img/almi3.jpg',
+        'assets/img/almi4.jpg',
+        'assets/img/almi5.jpg',
       ],
     },
     {
       name: 'Galería de Málaga',
       description: 'Descubre nuestro espacio en Málaga y sus productos destacados.',
-      thumbnail: 'assets/img/almi3.jpg',
+      thumbnail: 'assets/img/almi2.jpg',
       images: [
-        'assets/img/almi3.jpg',
+        'assets/img/almi1.jpg',
         'assets/img/almi4.jpg',
         'assets/img/malaga3.jpg',
       ],
@@ -31,9 +31,9 @@ export class Tab3Page {
     {
       name: 'Galería de Barcelona',
       description: 'Conoce nuestra tienda en Barcelona a través de estas fotos.',
-      thumbnail: 'assets/img/barcelona_thumb.jpg',
+      thumbnail: 'assets/img/1.jpg',
       images: [
-        'assets/img/barcelona1.jpg',
+        'assets/img/1.jpg',
         'assets/img/barcelona2.jpg',
         'assets/img/barcelona3.jpg',
       ],
@@ -41,9 +41,9 @@ export class Tab3Page {
     {
       name: 'Galería de Madrid',
       description: 'Una muestra de nuestra tienda en Madrid y sus productos.',
-      thumbnail: 'assets/img/madrid_thumb.jpg',
+      thumbnail: 'assets/img/3.jpg',
       images: [
-        'assets/img/madrid1.jpg',
+        'assets/img/3.jpg',
         'assets/img/madrid2.jpg',
         'assets/img/madrid3.jpg',
       ],

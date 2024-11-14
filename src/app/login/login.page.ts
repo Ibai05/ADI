@@ -44,7 +44,7 @@ export class LoginPage {
         if (error.status === 401) {
           this.errorMessage = 'Invalid username or password';
         } else {
-          this.errorMessage = 'An error occurred. Please try again later.';
+          this.errorMessage = 'Credenciales incorrectas';
         }
         console.error('Login error:', error);
       }

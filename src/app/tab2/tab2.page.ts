@@ -22,7 +22,7 @@ export class Tab2Page implements AfterViewInit {
     this.map = await GoogleMap.create({
       id: 'google-map',
       element: document.getElementById('map')!,
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY',  // Reemplaza con tu clave de API
+      apiKey: 'AIzaSyAp0YTi1cADoMis4e-_YhYArd2HcaOpBFg',  // Reemplaza con tu clave de API
       config: {
         center: { lat: 43.26798194009465, lng: -2.938611777307392 }, // Centro inicial
         zoom: 15,
