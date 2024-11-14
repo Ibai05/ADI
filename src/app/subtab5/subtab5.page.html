@@ -5,31 +5,16 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- Filtro de tipo de videojuegos -->
-  <ion-item>
-    <ion-label>Filtrar por género</ion-label>
-    <ion-select [(ngModel)]="filtroSeleccionado" (ionChange)="filtrarVideojuegos()">
-      <ion-select-option value="todos">Todos</ion-select-option>
-      <ion-select-option *ngFor="let tipo of tiposVideojuegos" [value]="tipo">{{ tipo }}</ion-select-option>
-    </ion-select>
-  </ion-item>
-
   <!-- Sección de Videojuegos Destacados con Scroll Horizontal -->
   <h3 class="section-title">Top Videojuegos</h3>
   <div class="horizontal-scroll">
-    <ion-card class="product-card" *ngFor="let videojuego of videojuegosFiltrados" [routerLink]="['/detalle', videojuego.id]">
+    <ion-card class="product-card" *ngFor="let videojuego of videojuegosFiltrados" >
       <ion-img [src]="videojuego.imagen" alt="Videojuego" class="product-img"></ion-img>
       <ion-card-content>
         <h2 class="product-title">{{ videojuego.nombre_producto }}</h2>
         <p class="price">Compra: {{ videojuego.precio_venta | currency: 'EUR' }}</p>
         <div class="button-container">
-          <ion-button color="success" size="small">
-            <ion-icon slot="start" name="cart"></ion-icon> 
-          </ion-button>
-        </div>
-        <p class="price">Alquiler: {{ videojuego.precio_alquiler | currency: 'EUR' }}</p>
-        <div class="button-container">
-          <ion-button color="success" size="small">
+          <ion-button color="success" size="small" (click)="agregarACesta(videojuego)">
             <ion-icon slot="start" name="cart"></ion-icon> 
           </ion-button>
         </div>
@@ -48,13 +33,7 @@
             <h2 class="product-title">{{ videojuego.nombre_producto}}</h2>
             <p class="price">Compra: {{ videojuego.precio_venta | currency: 'EUR' }}</p>
             <div class="button-container">
-              <ion-button color="success" size="small">
-                <ion-icon slot="start" name="cart"></ion-icon> 
-              </ion-button>
-            </div>
-            <p class="price">Alquiler: {{ videojuego.precio_alquiler | currency: 'EUR' }}</p>
-            <div class="button-container">
-              <ion-button color="success" size="small">
+              <ion-button color="success" size="small" (click)="agregarACesta(videojuego)">
                 <ion-icon slot="start" name="cart"></ion-icon> 
               </ion-button>
             </div>

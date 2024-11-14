@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SmartphoneService } from '../services/smartphone.service';
+import { CestaService } from '../services/cesta.service';  // Importar CestaService
 
 @Component({
   selector: 'app-subtab3',
@@ -7,15 +8,17 @@ import { SmartphoneService } from '../services/smartphone.service';
   styleUrls: ['./subtab3.page.scss'],
 })
 export class Subtab3Page implements OnInit {
-  smartphones: any[] = []; // Array para almacenar los productos
+  smartphones: any[] = []; 
 
-  constructor(private smartphoneService: SmartphoneService) {}
+  constructor(
+    private smartphoneService: SmartphoneService, 
+    private cestaService: CestaService  // Inyectamos el CestaService
+  ) {}
 
   ngOnInit() {
     this.loadSmartphones();
   }
 
-  // Cargar los smartphones desde el servicio
   loadSmartphones() {
     this.smartphoneService.getSmartphones().subscribe(
       (data) => {
@@ -25,5 +28,10 @@ export class Subtab3Page implements OnInit {
         console.error('Error al cargar los smartphones', error);
       }
     );
+  }
+
+  agregarACesta(smartphone: any) {
+    this.cestaService.agregarProducto(smartphone);
+    
   }
 }

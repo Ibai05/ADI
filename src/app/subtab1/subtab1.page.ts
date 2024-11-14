@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../services/producto.service';
 import { ConsolasService } from '../services/consolas.service';
 import { SmartphoneService } from '../services/smartphone.service';
+import { CestaService } from '../services/cesta.service'; // Asegúrate de tener este servicio
 
 @Component({
   selector: 'app-subtab1',
@@ -16,7 +17,8 @@ export class Subtab1Page implements OnInit {
   constructor(
     private productoService: ProductoService,
     private consolasService: ConsolasService,
-    private smartphoneService: SmartphoneService
+    private smartphoneService: SmartphoneService,
+    private cestaService: CestaService // Asegúrate de que CestaService está inyectado
   ) {}
 
   ngOnInit() {
@@ -56,5 +58,9 @@ export class Subtab1Page implements OnInit {
         console.error('Error al cargar los smartphones recientes', error);
       }
     );
+  }
+
+  agregarACesta(producto: any) {
+    this.cestaService.agregarProducto(producto); // Llama al método del servicio para agregar el producto
   }
 }

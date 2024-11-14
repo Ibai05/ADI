@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../services/producto.service';
+import { CestaService } from '../services/cesta.service';  // Importar CestaService
 
 @Component({
   selector: 'app-subtab5',
@@ -13,7 +14,10 @@ export class Subtab5Page implements OnInit {
   videojuegosFiltrados: any[] = [];
   videojuegosDestacados: any[] = [];
 
-  constructor(private productoService: ProductoService) { }
+  constructor(
+    private productoService: ProductoService, 
+    private cestaService: CestaService  // Inyectar CestaService
+  ) { }
 
   ngOnInit() {
     this.productoService.getVideojuegos().subscribe({
@@ -36,5 +40,9 @@ export class Subtab5Page implements OnInit {
       this.videojuegosFiltrados = this.videojuegos.filter(videojuego => videojuego.tipo === this.filtroSeleccionado);
     }
   }
-  
+
+  agregarACesta(videojuego: any) {
+    this.cestaService.agregarProducto(videojuego);  
+    
+  }
 }

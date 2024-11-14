@@ -1,21 +1,14 @@
-
 <ion-content>
   <!-- Videojuegos más recientes con scroll horizontal -->
   <h3 class="section-title">Videojuegos Más Recientes</h3>
   <div class="horizontal-scroll">
-    <ion-card class="product-card" *ngFor="let videojuego of videojuegos" [routerLink]="['/detalle', videojuego.id]">
+    <ion-card class="product-card" *ngFor="let videojuego of videojuegos">
       <ion-img [src]="videojuego.imagen" alt="Videojuego" class="product-img"></ion-img>
       <ion-card-content>
         <h2 class="product-title">{{ videojuego.nombre_producto }}</h2>
         <p class="price">Compra: {{ videojuego.precio_venta | currency: 'EUR' }}</p>
         <div class="button-container">
-          <ion-button color="success" size="small">
-            <ion-icon slot="start" name="cart"></ion-icon> 
-          </ion-button>
-        </div>
-        <p class="price">Alquiler: {{ videojuego.precio_alquiler | currency: 'EUR' }}</p>
-        <div class="button-container">
-          <ion-button color="success" size="small">
+          <ion-button color="success" size="small" (click)="agregarACesta(videojuego)">
             <ion-icon slot="start" name="cart"></ion-icon> 
           </ion-button>
         </div>
@@ -26,13 +19,13 @@
   <!-- Consolas más recientes con scroll horizontal -->
   <h3 class="section-title">Consolas Más Recientes</h3>
   <div class="horizontal-scroll">
-    <ion-card class="product-card" *ngFor="let consola of consolas" [routerLink]="['/detalle', consola.id]">
+    <ion-card class="product-card" *ngFor="let consola of consolas" >
       <ion-img [src]="consola.imagen" alt="Consola" class="product-img"></ion-img>
       <ion-card-content>
         <h2 class="product-title">{{ consola.nombre_producto }}</h2>
         <p class="price">Compra: {{ consola.precio_venta | currency: 'EUR' }}</p>
         <div class="button-container">
-          <ion-button color="success" size="small">
+          <ion-button color="success" size="small" (click)="agregarACesta(consola)">
             <ion-icon slot="start" name="cart"></ion-icon> 
           </ion-button>
         </div>
@@ -43,18 +36,17 @@
   <!-- Smartphones más recientes con scroll horizontal -->
   <h3 class="section-title">Smartphones Más Recientes</h3>
   <div class="horizontal-scroll">
-    <ion-card class="product-card" *ngFor="let smartphone of smartphones" [routerLink]="['/detalle', smartphone.id]">
+    <ion-card class="product-card" *ngFor="let smartphone of smartphones" >
       <ion-img [src]="smartphone.imagen" alt="Smartphone" class="product-img"></ion-img>
       <ion-card-content>
         <h2 class="product-title">{{ smartphone.nombre_producto }}</h2>
         <p class="price">Compra: {{ smartphone.precio_venta | currency: 'EUR' }}</p>
         <div class="button-container">
-          <ion-button color="success" size="small">
+          <ion-button color="success" size="small" (click)="agregarACesta(smartphone)">
             <ion-icon slot="start" name="cart"></ion-icon> 
           </ion-button>
         </div>
       </ion-card-content>
     </ion-card>
   </div>
-
 </ion-content>

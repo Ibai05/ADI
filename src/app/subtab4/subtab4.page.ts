@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoService } from 'src/app/services/producto.service';
+import { CestaService } from '../services/cesta.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-subtab4',
@@ -7,58 +8,36 @@ import { ProductoService } from 'src/app/services/producto.service';
   styleUrls: ['./subtab4.page.scss'],
 })
 export class Subtab4Page implements OnInit {
-  productosCesta = [
-    { nombre: 'Producto 1', precio: 99.99, cantidad: 1, imagen: 'assets/img/residentevil.jpg', tipo: 'compra' },
-    // Más productos de compra...
-  ];
-  productosAlquiler = [
-    { nombre: 'Producto Alquiler 1', precio: 49.99, cantidad: 1, imagen:'assets/img/residentevil.jpg', tipo: 'alquiler' },
-    // Más productos de alquiler...
-  ];
+  productosEnCesta: any[] = [];
 
-  constructor(private productoService: ProductoService) {}
+  constructor(private cestaService: CestaService, private router: Router) {}
 
-  ngOnInit() {}
-
-  // Función para agregar productos a la cesta
-  agregarACesta(consola: any) {
-    const productoExistente = this.productosCesta.find(p => p.nombre === consola.nombre_producto);
-    
-    if (productoExistente) {
-      productoExistente.cantidad += 1; // Si ya existe, incrementa la cantidad
-    } else {
-      this.productosCesta.push({
-        nombre: consola.nombre_producto,
-        precio: consola.precio_venta,
-        cantidad: 1,
-        imagen: consola.imagen,
-        tipo: 'compra'
-      });
-    }
+  ngOnInit() {
+    this.productosEnCesta = this.cestaService.obtenerProductos();
   }
 
-  actualizarCantidad(producto: any, cambio: number) {
-    const nuevaCantidad = producto.cantidad + cambio;
-    if (nuevaCantidad > 0) {
-      producto.cantidad = nuevaCantidad;
-    }
+  vaciarCesta() {
+    this.cestaService.vaciarCesta();
+    this.productosEnCesta = [];
   }
 
   eliminarProducto(producto: any) {
-    if (producto.tipo === 'compra') {
-      this.productosCesta = this.productosCesta.filter(p => p !== producto);
-    } else {
-      this.productosAlquiler = this.productosAlquiler.filter(p => p !== producto);
-    }
+    this.cestaService.eliminarProducto(producto);
+    this.productosEnCesta = this.cestaService.obtenerProductos();
   }
 
   calcularTotal() {
-    const totalCompra = this.productosCesta.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0);
-    const totalAlquiler = this.productosAlquiler.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0);
-    return totalCompra + totalAlquiler;
+    return this.productosEnCesta.reduce((total, producto) => {
+      const precio = parseFloat(producto.precio_venta);
+      return total + (isNaN(precio) ? 0 : precio);
+    }, 0);
   }
 
-  procederPago() {
-    alert('Proceder al pago no está implementado todavía.');
+  comprar() {
+    if (this.productosEnCesta.length > 0) {
+      this.router.navigate(['/pago']);
+    } else {
+      alert("La cesta está vacía. No puedes comprar.");
+    }
   }
 }

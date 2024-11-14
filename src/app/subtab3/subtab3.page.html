@@ -1,15 +1,13 @@
-
 <ion-content>
-  <!-- Sección de smartphones destacados con scroll horizontal -->
   <h3 class="section-title">Top Smartphones</h3>
   <div class="horizontal-scroll">
-    <ion-card class="product-card" *ngFor="let smartphone of smartphones" [routerLink]="['/detalle', smartphone.id]">
+    <ion-card class="product-card" *ngFor="let smartphone of smartphones" >
       <ion-img [src]="smartphone.imagen" alt="Smartphone" class="product-img"></ion-img>
       <ion-card-content>
         <h2 class="product-title">{{ smartphone.nombre_producto }}</h2>
         <p class="price">Compra: {{ smartphone.precio_venta | currency: 'EUR' }}</p>
         <div class="button-container">
-          <ion-button color="success" size="small">
+          <ion-button color="success" size="small" (click)="agregarACesta(smartphone)">
             <ion-icon slot="start" name="cart"></ion-icon> 
           </ion-button>
         </div>
@@ -17,7 +15,6 @@
     </ion-card>
   </div>
 
-  <!-- Sección de todos los smartphones -->
   <h3 class="section-title">Todos los Smartphones</h3>
   <ion-grid class="compact-grid">
     <ion-row>
@@ -28,7 +25,7 @@
             <h2 class="product-title">{{ smartphone.nombre_producto }}</h2>
             <p class="price">Compra: {{ smartphone.precio_venta | currency: 'EUR' }}</p>
             <div class="button-container">
-              <ion-button color="success" size="small">
+              <ion-button color="success" size="small" (click)="agregarACesta(smartphone)">
                 <ion-icon slot="start" name="cart"></ion-icon> 
               </ion-button>
             </div>
