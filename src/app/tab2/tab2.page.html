@@ -1,4 +1,3 @@
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -6,5 +5,12 @@
     </ion-toolbar>
   </ion-header>
   
-  <div id="map" style="width: 100%; height: 100%;"></div>
+  <!-- Mapa -->
+  <div id="map"></div>
+  
+  <!-- Botones para centrar el mapa -->
+  <div class="button-container">
+    <ion-button expand="block" (click)="centerOnCompany()">Empresa</ion-button>
+    <ion-button expand="block" (click)="centerOnUserLocation()">Mi ubicación</ion-button>
+  </div>
 </ion-content>

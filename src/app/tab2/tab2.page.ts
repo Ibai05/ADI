@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { GoogleMap } from '@capacitor/google-maps';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-tab2',
@@ -8,6 +9,8 @@ import { GoogleMap } from '@capacitor/google-maps';
 })
 export class Tab2Page implements AfterViewInit {
   map!: GoogleMap;
+  userMarker: any;
+  companyMarker: any;
 
   constructor() {}
 
@@ -17,21 +20,57 @@ export class Tab2Page implements AfterViewInit {
 
   async loadMap() {
     this.map = await GoogleMap.create({
-      id: 'google-map', 
+      id: 'google-map',
       element: document.getElementById('map')!,
-      apiKey: 'AIzaSyAp0YTi1cADoMis4e-_YhYArd2HcaOpBFg', // Reemplaza con tu clave de API
+      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY',  // Reemplaza con tu clave de API
       config: {
-        center: { lat: 43.26798194009465, lng: -2.938611777307392 }, 
-        zoom: 15, 
+        center: { lat: 43.26798194009465, lng: -2.938611777307392 }, // Centro inicial
+        zoom: 15,
       },
     });
 
-    await this.map.addMarker({
+    // Agregar marcador de la empresa
+    this.companyMarker = await this.map.addMarker({
       coordinate: {
         lat: 43.26798194009465,
         lng: -2.938611777307392,
       },
       title: "Torre Iberdrola",
     });
+
+    // Obtener y agregar marcador de la ubicación del usuario
+    const position = await Geolocation.getCurrentPosition();
+    this.userMarker = await this.map.addMarker({
+      coordinate: {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      },
+      title: "Mi Ubicación",
+    });
+  }
+
+  // Centrar mapa en el marcador de la empresa
+  async centerOnCompany() {
+    await this.map.setCamera({
+      coordinate: {
+        lat: 43.26798194009465,
+        lng: -2.938611777307392,
+      },
+      zoom: 15,
+    });
+  }
+
+  // Centrar mapa en la ubicación del usuario
+  async centerOnUserLocation() {
+    if (this.userMarker) {
+      const position = await Geolocation.getCurrentPosition();
+      await this.map.setCamera({
+        coordinate: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        },
+        zoom: 15,
+      });
+    }
   }
 }
