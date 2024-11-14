@@ -15,16 +15,17 @@ export class CestaService {
 
   agregarProducto(producto: any) {
     const productoExistente = this.productos.find(p => p.id === producto.id);
-
+  
     if (productoExistente) {
       productoExistente.cantidad += 1; // Aumentar la cantidad del producto existente
     } else {
       producto.cantidad = 1; // Inicializar cantidad si es nuevo
       this.productos.push(producto);
     }
-
+  
     this.mostrarMensaje('Producto añadido con éxito');
   }
+  
 
   eliminarProducto(producto: any) {
     const index = this.productos.findIndex(p => p.id === producto.id);

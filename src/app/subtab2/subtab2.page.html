@@ -11,13 +11,7 @@
     <ion-card class="product-card" *ngFor="let consola of consolas">
       <ion-img [src]="consola.imagen" alt="Consola" class="product-img"></ion-img>
       <ion-card-content>
-        <div class="product-header">
-          <h2 class="product-title">
-            {{ consola.nombre_producto }}
-          </h2>
-          <!-- Mostrar la cantidad al lado del nombre -->
-          <span *ngIf="obtenerCantidad(consola)" class="cantidad">{{ obtenerCantidad(consola) }}</span>
-        </div>
+        <h2 class="product-title">{{ consola.nombre_producto }}</h2>
         <p class="price">Compra: {{ consola.precio_venta | currency: 'EUR' }}</p>
         <div class="button-container">
           <ion-button color="success" size="small" (click)="comprar(consola)">
@@ -36,16 +30,10 @@
         <ion-card class="product-card">
           <ion-img [src]="consola.imagen" alt="Consola" class="product-img"></ion-img>
           <ion-card-content>
-            <div class="product-header">
-              <h2 class="product-title">
-                {{ consola.nombre_producto }}
-              </h2>
-              <!-- Mostrar la cantidad al lado del nombre -->
-              <span *ngIf="obtenerCantidad(consola)" class="cantidad">{{ obtenerCantidad(consola) }}</span>
-            </div>
+            <h2 class="product-title">{{ consola.nombre_producto }}</h2>
             <p class="price">Compra: {{ consola.precio_venta | currency: 'EUR' }}</p>
             <div class="button-container">
-              <ion-button color="success" size="small" (click)="comprar(consola)">
+              <ion-button color="success" size="small">
                 <ion-icon slot="start" name="cart"></ion-icon> 
               </ion-button>
             </div>

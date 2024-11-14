@@ -11,7 +11,7 @@
         <ion-img [src]="producto.imagen" alt="Producto"></ion-img>
       </ion-thumbnail>
       <ion-label>
-        <h2>{{ producto.nombre_producto }}</h2>
+        <h2>{{ producto.nombre_producto }} <span>({{ producto.cantidad }})</span></h2> <!-- Cantidad al lado del nombre -->
         <p>Precio: {{ producto.precio_venta | currency: 'EUR' }}</p>
       </ion-label>
       <ion-button fill="clear" color="danger" (click)="eliminarProducto(producto)">
