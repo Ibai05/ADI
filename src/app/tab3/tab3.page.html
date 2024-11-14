@@ -1,16 +1,26 @@
-
-
 <ion-content>
-  <div class="carousel-container">
-    <ion-img [src]="imagenes[currentIndex]" class="carousel-image"></ion-img>
+  <h2 class="title">Galerías de Fotos de la Tienda</h2>
+  <div class="gallery-selection">
+    <div class="gallery-item" *ngFor="let gallery of galleries" (click)="openCarousel(gallery.images)">
+      <ion-img [src]="gallery.thumbnail" class="gallery-thumbnail"></ion-img>
+      <div class="gallery-info">
+        <h3>{{ gallery.name }}</h3>
+        <p>{{ gallery.description }}</p>
+      </div>
+    </div>
+  </div>
 
-    <!-- Botones de navegación -->
+  <!-- Carrusel de imágenes -->
+  <div *ngIf="isCarouselOpen" class="carousel-container">
+    <ion-img [src]="currentImages[currentIndex]" class="carousel-image"></ion-img>
     <ion-button (click)="prevImage()" fill="clear" class="carousel-button prev-button">
       <ion-icon name="arrow-back"></ion-icon>
     </ion-button>
-
     <ion-button (click)="nextImage()" fill="clear" class="carousel-button next-button">
       <ion-icon name="arrow-forward"></ion-icon>
+    </ion-button>
+    <ion-button (click)="closeCarousel()" fill="clear" class="close-button">
+      <ion-icon name="close"></ion-icon>
     </ion-button>
   </div>
 </ion-content>

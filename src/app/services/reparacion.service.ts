@@ -8,8 +8,8 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class ReparacionService {
-  private productosUrl = `${environment.apiUrl}/admin/productos/nombres-ids-tipos-consolas-smartphones`;
-  private reparacionUrl = `${environment.apiUrl}api/reparacion/nueva`; // Ajuste de la URL para evitar la doble barra
+  private productosUrl = `${environment.apiUrl} /admin/productos/nombres-ids-tipos-consolas-smartphones`;
+  private reparacionUrl = `${environment.apiUrl}/reparacion/api/crear-reparacion`; // Asegurarse de una sola barra
 
   constructor(private http: HttpClient) {}
 

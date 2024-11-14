@@ -8,7 +8,7 @@ import {environment} from "../environments/environment";
 })
 export class ConsolasService {
 
-  private apiUrl = `${environment.apiUrl}admin/productos/consolas`;
+  private apiUrl = `${environment.apiUrl}/admin/productos/consolas`;
 
   constructor(private http: HttpClient) { }
 

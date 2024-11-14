@@ -1,38 +1,80 @@
+.login-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f7;
+}
+
 .login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 32px;
-  }
-  
-  .login-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #000000;
-    margin-bottom: 24px;
-  }
-  
-  .input-item {
-    width: 100%;
-    background-color: #E0E0E0;
-    padding: 0 12px;
-    color: #000000;
-    margin-top: 16px;
-  }
-  
-  .login-button {
-    margin-top: 24px;
-    background-color: #68B3F2;
-    border-radius: 4px;
-    color: #FFFFFF;
-    font-family: sans-serif-medium;
-  }
-  
-  .register-button {
-    margin-top: 8px;
-    border-radius: 4px;
-    background-color: #68B3F2;
-    color: #FFFFFF;
-    font-family: sans-serif-medium;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.login-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.icon {
+  font-size: 80px;
+  color: #4a90e2;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  color: #4a90e2;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #6b6b6b;
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+.input-item {
+  --background: #f2f2f7;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.login-button {
+  margin-top: 20px;
+  font-weight: bold;
+  background-color: #4a90e2;
+  --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  --background-hover: #357ABD;
+}
+
+.register-button {
+  margin-top: 10px;
+  color: #4a90e2;
+  --border-color: #4a90e2;
+}
+
+.login-button, .register-button {
+  transition: transform 0.3s;
+}
+
+.login-button:hover, .register-button:hover {
+  transform: translateY(-2px);
+}
+
+.login-button:active, .register-button:active {
+  transform: scale(0.98);
+}

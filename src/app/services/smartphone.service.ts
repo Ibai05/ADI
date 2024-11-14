@@ -7,7 +7,7 @@ import {environment} from "../environments/environment";
   providedIn: 'root',
 })
 export class SmartphoneService {
-  private apiUrl = `${environment.apiUrl}admin/productos/smartphones`;
+  private apiUrl = `${environment.apiUrl}/admin/productos/smartphones`;
   constructor(private http: HttpClient) {}
 
   // Método para obtener los smartphones

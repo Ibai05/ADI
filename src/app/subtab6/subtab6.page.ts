@@ -10,7 +10,7 @@ import { ReparacionService } from '../services/reparacion.service';
 })
 export class Subtab6Page implements OnInit {
   productos: { id: number; nombre_producto: string }[] = [];
-  productoSeleccionado: string = '';
+  productoSeleccionado: number | null = null;
   descripcion: string = '';
 
   constructor(
@@ -24,19 +24,29 @@ export class Subtab6Page implements OnInit {
   }
 
   cargarProductos() {
-    this.consolasService.getConsolas().subscribe((consolas) => {
-      this.smartphoneService.getSmartphones().subscribe((smartphones) => {
-        // Combina consolas y smartphones extrayendo solo id y nombre_producto
-        this.productos = [
-          ...consolas.map((c) => ({ id: c.id, nombre_producto: c.nombre_producto })),
-          ...smartphones.map((s) => ({ id: s.id, nombre_producto: s.nombre_producto }))
-        ];
-      });
+    this.consolasService.getConsolas().subscribe({
+      next: (consolas) => {
+        this.smartphoneService.getSmartphones().subscribe({
+          next: (smartphones) => {
+            // Combina consolas y smartphones extrayendo solo id y nombre_producto
+            this.productos = [
+              ...consolas.map((c) => ({ id: c.id, nombre_producto: c.nombre_producto })),
+              ...smartphones.map((s) => ({ id: s.id, nombre_producto: s.nombre_producto }))
+            ];
+          },
+          error: (error) => {
+            console.error('Error al cargar smartphones:', error);
+          }
+        });
+      },
+      error: (error) => {
+        console.error('Error al cargar consolas:', error);
+      }
     });
   }
 
   onSubmit() {
-    if (!this.productoSeleccionado || !this.descripcion) {
+    if (this.productoSeleccionado === null || !this.descripcion.trim()) {
       console.error('Por favor, selecciona un producto y escribe una descripción.');
       return;
     }
@@ -58,7 +68,7 @@ export class Subtab6Page implements OnInit {
   }
 
   resetForm() {
-    this.productoSeleccionado = '';
+    this.productoSeleccionado = null;
     this.descripcion = '';
   }
 }

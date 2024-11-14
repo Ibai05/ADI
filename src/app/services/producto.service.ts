@@ -7,7 +7,7 @@ import {environment} from "../environments/environment";
   providedIn: 'root'
 })
 export class ProductoService {
-  private apiUrl = `${environment.apiUrl}admin/productos/videojuegos`;
+  private apiUrl = `${environment.apiUrl}/admin/productos/videojuegos`;
   constructor(private http: HttpClient) { }
 
   getVideojuegos(): Observable<any[]> {
